@@ -133,9 +133,5 @@ python evaluate.py --eye_model models/eye_model.pkl --labels_csv data/eye/meta/l
 - This repo is a research/demo scaffold. If you plan to reuse datasets, check dataset licenses before redistribution.
 - Open a GitHub issue or PR with reproducible steps for fixes or improvements.
 
----
-If you'd like, I can:
-- add a small example with sample images to `examples/` for quick testing, or
-- produce a minimal Dockerfile to containerize the Streamlit demo.
 
 
