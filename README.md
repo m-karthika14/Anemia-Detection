@@ -2,6 +2,19 @@
 
 Detects anemia from conjunctiva (eye) and fingernail images using handcrafted color/edge features and classical ML models.
 
+**Project**
+This project demonstrates a lightweight, explainable pipeline for screening anemia using two complementary visual cues: the conjunctiva (eye) and the fingernail. It focuses on reproducible preprocessing, handcrafted color and edge features, and classical ML classifiers (Random Forest / SVM / Naive Bayes) rather than end-to-end deep models, enabling fast training and simple interpretability. The repository contains scripts for preparing data, training models, evaluating performance, and a Streamlit demo for easy experimentation.
+
+**Pipeline (high level)**
+1. Data acquisition & preparation — obtain eye and nail datasets (e.g., via Kaggle) and run `setup_data.py` to extract and structure the files. Use `create_eye_labels.py` and `create_nail_pseudo_labels.py` to generate required CSVs.
+2. Preprocessing & segmentation — images are preprocessed and segmented using functions in `utils/image_processing.py` (resizing, masking, edge detection).
+3. Feature extraction — handcrafted color (HSV/chromatic) and edge features are computed in `utils/feature_extraction.py` for each image/mask pair.
+4. Training — `train_eye.py` and `train_nail.py` train scikit-learn models and save them to `models/` (default outputs `eye_model.pkl`, `nail_model.pkl`).
+5. Model comparison & selection — `compare_models.py` evaluates multiple classifiers on the eye dataset and writes `outputs/model_comparison.csv` and an accuracy plot used by the demo.
+6. Prediction & fusion — use `predict.py` or the Streamlit app (`app.py`) to score images. The demo fuses eye/nail model probabilities using weights (defaults in `app.py`: `EYE_WEIGHT=0.7`, `NAIL_WEIGHT=0.3`) and a threshold (`THRESHOLD=0.5`) to produce a final label.
+7. Evaluation & visualization — `evaluate.py` computes summary metrics (precision/recall/f1) and saves visual examples to `outputs/`.
+
+
 **Repository layout (important files)**
 - **[app.py](app.py)**: Streamlit-based demo UI for uploading images and getting predictions.
 - **[predict.py](predict.py)**: CLI tool to score a pair of eye/nail images and print a label.
