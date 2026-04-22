@@ -48,7 +48,7 @@ pip install -r requirements.txt
 - 1. Eyes Defy Anemia Dataset 🔗 https://www.kaggle.com/datasets/harshwardhanfartale/eyes-defy-anemia 
 - 2. Nail Segmentation Dataset 🔗 https://www.kaggle.com/datasets/muhammadhammad261/nail-segmentation-dataset
      
-- Use `setup_data.py` to unpack/prep datasets you obtain (example datasets are available on Kaggle).
+- Use `setup_data.py` to unpack/prep datasets you obtain.
 - Expected basic layout after `setup_data.py` / manual organization:
 	- `data/eye/` — images, masks, and `meta/labels.csv` for eye conjunctiva
 	- `data/nail/images/` and `data/nail/masks/` — nail images and segmentation masks
